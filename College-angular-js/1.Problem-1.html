@@ -8,12 +8,10 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Rubik+Doodle+Shadow&display=swap');
-      </style>
+    </style>
     <style>
         body {
             background-color: lightblue;
-
-          
         }
 
         p {
@@ -24,29 +22,13 @@
         }
 
         span {
-            /* text-decoration: underline; */
-            /* text-shadow: 2px 2px 8px #431347; */
-            /* animation-name: myName; */
-            /* animation-duration: 3s; */
-            font-family:"Rubik Doodle Shadow" ;
+            
+            font-family: "Rubik Doodle Shadow";
             color: deeppink
-          
         }
-/* 
-        @keyframes myName {
-            from {
-                background-color: rgb(227, 211, 42);
-                
-            }
 
-            to {
-                background-color: rgb(218, 41, 197);
-              
-            }
-
-        } */
-        label{
-            font-family:monospace ;
+        label {
+            font-family: monospace;
         }
     </style>
 </head>
@@ -54,8 +36,10 @@
 <body>
     <div ng-app="" ng-init="firstName = 'Pratiksha' ; lastName = 'Kshirsagar' ">
 
-         <label for="first"> First-Name:</label><input id="first" type="text" ng-model = "firstName" placeholder="Enter first name"> <br>
-       <label for="last">Last-Name:</label> <input id="last" type="text" ng-model = "lastName" placeholder="Enter last name">
+        <label for="first"> First-Name:</label><input id="first" type="text" ng-model="firstName"
+            placeholder="Enter first name"> <br>
+        <label for="last">Last-Name:</label> <input id="last" type="text" ng-model="lastName"
+            placeholder="Enter last name">
 
         <p> The name is <span> {{firstName +" "+ lastName}}</span> !!💗💗 </p>
     </div>
