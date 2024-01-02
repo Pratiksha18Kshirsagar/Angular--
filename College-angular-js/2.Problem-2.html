@@ -17,16 +17,11 @@
                 {{x}}
                 <button ng-click="removeItem()"> remove </button>
             </li>
-
-
         </ul>
         <input type="text " placeholder="Add-Item" ng-model="AddMe">
         <button ng-click="addItem()">Add</button>
         <p>{{errorText}}</p>
     </div>
-
-
-
 
     <script>
         var app = angular.module("myApp", []);
@@ -44,18 +39,10 @@
                     $scope.errorText = 'The item is already in your shopping list!!';
                 }
             }
-
             $scope.removeItem = function (x) {
                 $scope.list.splice(x, 1);
-
             }
-
-
-
         })
-
-
-
     </script>
 </body>
 

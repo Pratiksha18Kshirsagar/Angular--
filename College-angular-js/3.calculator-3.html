@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <style>
+        .but {
+            display: grid;
+            grid-template-columns: 50px 50px 50px 50px;
+            gap: 5px;
+            grid-template-rows: 50px 50px 50px 50px;
+        }
+
+        input {
+            width: 208px;
+            margin-bottom: 5px;
+            padding: 4px;
+        }
+    </style>
+</head>
+
+<body>
+    <div  ng-controller="myCtrl">
+        <input type="text" ng-model = "display" disabled>
+
+        <div class="but">
+            <button ng-click='appendToDisplay("1")'>1</button>
+            <button ng-click='appendToDisplay("2")'>2</button>
+            <button ng-click='appendToDisplay("3")'>3</button>
+            <button ng-click='appendToDisplay("+")'>+</button>
+            <button ng-click='appendToDisplay("4")'>4</button>
+            <button ng-click='appendToDisplay("5")'>5</button>
+            <button ng-click='appendToDisplay("6")'>6</button>
+            <button ng-click='appendToDisplay("-")'>-</button>
+            <button ng-click='appendToDisplay("7")'>7</button>
+            <button ng-click='appendToDisplay("8")'>8</button>
+            <button ng-click='appendToDisplay("9")'>9</button>
+            <button ng-click='appendToDisplay("*")'>*</button>
+            <button ng-click='appendToDisplay("0")'>0</button>
+            <button ng-click='calculateResult()'>=</button>
+            <button ng-click='clearDisplay()'>c</button>
+            <button ng-click='appendToDisplay("/")'>/</button>
+        </div>
+    </div>
+
+
+
+
+    <script>
+        let model = angular.module("myApp", []);
+        model.controller("myCtrl", function ($scope) {
+            $scope.display = " ";
+            $scope.appendToDisplay = function (value) {
+                $scope.display = $scope.display + value;
+            }
+            $scope.calculateResult = function () {
+                try {
+                    $scope.display = eval($scope.display).toString();
+                }
+                catch(error) {
+                    $scope.display = 'error';
+                }
+            }
+            $scope.clearDisplay = function () {
+                $scope.display = " ";
+            }
+            console.log("I am working")
+        })
+        
+
+
+    </script>
+
+</body>
+
+</html>
