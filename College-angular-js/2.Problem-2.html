@@ -28,21 +28,23 @@
         app.controller("myCtrl", function ($scope) {
             $scope.list = ['Milk', 'Butter', 'Bread', 'Eggs'];
             $scope.addItem = function () {
-                $scope.errorText = '';
-                if (!$scope.AddMe) {
-                    return;
+                $scope.errorText = ''; 
+                if (!$scope.AddMe) { 
+                    return;  
                 }
                 if ($scope.list.indexOf($scope.AddMe) == -1) {
+                    console.log($scope.list.indexOf($scope.AddMe))
                     $scope.list.push($scope.AddMe);
                 }
                 else {
+                    console.log($scope.list.indexOf($scope.AddMe))
                     $scope.errorText = 'The item is already in your shopping list!!';
                 }
             }
             $scope.removeItem = function (x) {
-                $scope.list.splice(x, 1);
+                $scope.list.splice(x, 1); 
             }
-        })
+        }) 
     </script>
 </body>
 
