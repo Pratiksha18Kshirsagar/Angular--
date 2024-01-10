@@ -9,14 +9,16 @@
 </head>
 
 <body>
+    <!-- ng-submit is same as click but it works even for the enter in the kb!! -->
     <form ng-submit="generateStudentDetails()">
         <h1>Student Details</h1>
         <label for="stu">Enter The Number Of Students : </label>
         <input type="text" id="stu" placeholder="0" ng-model="numberOfStu">
         <button>Generate Details</button>
     </form>
-    <div ng-if="students.length > 0" >
+    <div ng-if="students.length > 0">
         <p>Total students {{students.length}}</p>
+        <!-- ng-repeat works as a for loop!! -->
         <div ng-repeat="s in students">
             <h3>student {{$index+1}}</h3>
             <label for="name">Name:</label>
@@ -44,9 +46,11 @@
                 return student;
             }
             function getRandomCgpa() {
+                // tofixed is use to fix  the number after the point !!
                 return (Math.random() * 10).toFixed(2);
             }
         })        
     </script>
 </body>
+
 </html>
