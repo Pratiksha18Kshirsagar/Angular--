@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp" ng-controller="myCtrl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-do-List</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+</head>
+
+<body>
+    <h2>TO-DO-LIST</h2>
+    <ul>
+        <li ng-repeat = "t in task">{{t}}
+            <button ng-click = "editTask($index)">Edit</button>
+            <button ng-click = "deleteTask($index)">Delete</button>
+        </li>
+    </ul>
+    <input type="text" ng-model="newTask" placeholder="Add a new task">
+    <button ng-click = "addTask()">Add-Task</button>
+    <div ng-show = "isEditing()">
+        <input type="text" ng-model="editedTask" placeholder="Edit Task">
+        <button ng-click = "updateTask()">Update</button>
+        <button ng-click = "cancelEdit()">Cancel</button>
+    </div> 
+
+
+    <script>
+        angular.module("myApp", []).controller("myCtrl", function ($scope) {
+            $scope.newTask = " ";
+            $scope.task = ["Task1", "Task2", "Task3"];
+            $scope.isEditing = false;
+            $scope.editedTask = " ";
+            $scope.editIndex = -1;
+            $scope.addTask = function () {
+                if ($scope.newTask.trim() != " ") {
+                    $scope.task.push($scope.newTask);
+                    $scope.newTask = " ";
+                }
+            }
+
+            $scope.editTask = function (index) {
+                $scope.isEditing = true;
+                $scope.editIndex = index;
+                $scope.editedTask = $scope.task[index];
+            }
+
+            $scope.updateTask = function () {
+                if ($scope.editTask.trim() != " ") {
+                    $scope.task[$scope.editIndex] = $scope.editedTask;
+                    $scope.isEditing = false;
+                    $scope.editedTask = " ";
+                }
+            }
+
+            $scope.cancelEdit = function () {
+                $scope.isEditing = false;
+                $scope.editedTask = " ";
+            }
+
+            $scope.deleteTask = function (index) {
+                $scope.task.splice(index, 1);
+
+            }
+        })
+    </script>
+</body>
+
+</html>
