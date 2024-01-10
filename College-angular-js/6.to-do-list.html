@@ -28,15 +28,15 @@
 
     <script>
         angular.module("myApp", []).controller("myCtrl", function ($scope) {
-            $scope.newTask = " ";
+            $scope.newTask = '';
             $scope.task = ["Task1", "Task2", "Task3"];
             $scope.isEditing = false;
-            $scope.editedTask = " ";
+            $scope.editedTask = '';
             $scope.editIndex = -1;
             $scope.addTask = function () {
-                if ($scope.newTask.trim() != " ") {
+                if ($scope.newTask.trim() != '') {
                     $scope.task.push($scope.newTask);
-                    $scope.newTask = " ";
+                    $scope.newTask = '';
                 }
             }
 
@@ -47,16 +47,16 @@
             }
 
             $scope.updateTask = function () {
-                if ($scope.editTask.trim() != " ") {
+                if ($scope.editedTask.trim() != '') {
                     $scope.task[$scope.editIndex] = $scope.editedTask;
                     $scope.isEditing = false;
-                    $scope.editedTask = " ";
+                    $scope.editedTask = '';
                 }
             }
 
             $scope.cancelEdit = function () {
                 $scope.isEditing = false;
-                $scope.editedTask = " ";
+                $scope.editedTask = '';
             }
 
             $scope.deleteTask = function (index) {
