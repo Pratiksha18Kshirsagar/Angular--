@@ -11,14 +11,15 @@
 <body>
     <h2>TO-DO-LIST</h2>
     <ul>
-        <li ng-repeat = "t in task">{{t}}
+        <li ng-repeat = "t in task ">{{t}}
             <button ng-click = "editTask($index)">Edit</button>
             <button ng-click = "deleteTask($index)">Delete</button>
         </li>
     </ul>
     <input type="text" ng-model="newTask" placeholder="Add a new task">
     <button ng-click = "addTask()">Add-Task</button>
-    <div ng-show = "isEditing()">
+
+    <div ng-show = "isEditing">
         <input type="text" ng-model="editedTask" placeholder="Edit Task">
         <button ng-click = "updateTask()">Update</button>
         <button ng-click = "cancelEdit()">Cancel</button>
