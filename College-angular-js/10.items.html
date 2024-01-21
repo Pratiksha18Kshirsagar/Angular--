@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp" , ng-controller="myCtrl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Collection of items</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+</head>
+
+<body>
+    <h1>Item-Collection</h1>
+    <p>Total Items:{{items.length}}</p>
+    <ul>
+        <li>{{item}}</li>
+        <button ng-click="removeItem($index)">Remove</button>
+    </ul>
+    <form>
+        <label for="newItem">Add-New-Item:</label>
+        <input type="text" id="newItem" ng-model="newItem">
+
+        <button ng-click="addItems()">Add</button>
+    </form>
+
+
+
+
+
+
+    <script>
+        angular.module("myApp", []).controller("myCtrl", function ($scope) {
+            $scope.newItem;
+            $scope.items = ['item1', 'item2', 'item3'];
+            $scope.addItems = function () {
+                if ($scope.newItem) {
+                    $scope.items.push($scope.newItem);
+                    $scope.newItem = " ";
+
+                }
+            }
+
+            $scope.removeItem = function (index) {
+                $scope.item.splice(index, 1);
+
+
+            }
+
+        })
+    </script>
+</body>
+
+</html>

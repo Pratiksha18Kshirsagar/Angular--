@@ -33,8 +33,9 @@
             $scope.isEditing = false;
             $scope.editedTask = '';
             $scope.editIndex = -1;
+            
             $scope.addTask = function () {
-                if ($scope.newTask.trim() != '') {
+                if ($scope.newTask != '') {
                     $scope.task.push($scope.newTask);
                     $scope.newTask = '';
                 }

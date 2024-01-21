@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp" , ng-controller="myCtrl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee-salary</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+</head>
+
+<body>
+    <h1>Employee List</h1>
+    <label for="searchName">Search-By-Name:</label>
+    <input type="text" id="searchName" ng-model="searchName">
+    <label for="searchSalary">search-by-salary:</label>
+    <input type="text" id="searchSalary" ng-model="searchSalary">
+    <ul>
+        <li ng-repeat="e in employees | customFilter:searchName:searchSalary">{{e.name}}-salary :: {{e.salary}}</li>
+    </ul>
+
+    <script>
+        angular.module("myApp", []).controller("myCtrl", function ($scope) {
+            $scope.employees = [{ name: "John Doe", salary: 500000 },
+            { name: "James smith", salary: 60000 },
+            { name: "Bob Jhonson", salary: 75000 }];
+        })
+
+            .filter("customFilter", function () {
+                return function (employees, searchName, searchSalary) {
+                    var filteredEmployees = [];
+                    angular.forEach(employees, function (e) {
+                        var nameMatch = !searchName || e.name.toLowerCase().includes(searchName.toLowerCase());
+                        var salaryMatch = !searchSalary || e.salary >= searchSalary;
+                        if (nameMatch && salaryMatch) {
+                            filteredEmployees.push(e);
+                        }
+                    })
+                    return filteredEmployees;
+                }
+            })
+
+    </script>
+</body>
+
+</html>

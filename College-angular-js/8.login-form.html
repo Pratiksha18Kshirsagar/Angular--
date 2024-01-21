@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp" ng-controller="myCtrl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login-Form</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+</head>
+
+<body>
+    <h1>Login</h1>
+    <form ng-submit="login()">
+        <div>
+            <label for="userName">Username:</label>
+            <input type="text" id="userName" ng-model="userName">
+            <span>{{loginError}}</span>
+        </div>
+        <div>
+            <label for="password">Password:</label>
+            <input type="text " id="password" ng-model="passWord">
+
+        </div>
+        <button>Login</button>
+    </form>
+
+    <script>
+        angular.module("myApp", []).controller("myCtrl", function ($scope) {
+            $scope.userName ;
+            $scope.passWord ;
+            $scope.loginError ;
+
+            $scope.login = function () {
+                if (!$scope.userName || !$scope.passWord) {
+                    $scope.loginError = "Please eneter both user name and password";
+                    return;
+                }
+                if ($scope.userName == "user" && $scope.passWord == "password") {
+                    alert("Login Successfull!!");
+                }
+                else {
+                    $scope.loginError = "Invalid user name or a password!!";
+                }
+            }
+
+
+        })
+    </script>
+</body>
+
+</html>
