@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp" ng-controller="myCtrl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Details</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+</head>
+
+<body>
+    <h1>Student Details</h1>
+    <ul>
+        <li ng-repeat="s in students">{{s.name | uppercase }} - {{s.grade | uppercase}} </li>
+    </ul>
+    <label for="studentName">Name:</label>
+    <input type="text" id="studentName" ng-model="newStudent.name">
+    <label for="studentGrade">Grade:</label>
+    <input type="text" id="studentName" ng-model="newStudent.grade">
+    <button ng-click="addStudent()">Add-Student</button>
+
+
+
+    <script>
+        angular.module("myApp", []).controller("myCtrl", function ($scope) {
+            $scope.students = [{ name: "Jhon doe", grade: "A" }, { name: "James smith", grade: "B" }, { name: "Bob jhonson", grade: "C" }];
+            $scope.newStudent = { name: "", grade: "" };
+            $scope.addStudent = function () {
+                if ($scope.newStudent.name && $scope.newStudent.grade) {
+                    $scope.students.push({ name: $scope.newStudent.name, grade: $scope.newStudent.grade });
+                    $scope.newStudent = { name: "", grade: "" };
+
+                }
+            }
+
+        })
+    </script>
+</body>
+
+</html>
